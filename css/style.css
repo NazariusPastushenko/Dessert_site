@@ -1,0 +1,197 @@
+/* Основні стилі та скидання */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* Кольори з вашої палітри */
+    background-color: #590D22;
+    color: #A4133C;
+    line-height: 1.6;
+}
+
+/* Колірна палітра */
+:root {
+    --color-dark-burgundy: #590D22;
+    --color-medium-burgundy: #800F2F;
+    --color-light-burgundy: #A4133C;
+    --color-text-light: #F2E9E4; /* Світлий колір для читабельності на темному фоні */
+}
+
+/* Хедер та навігація */
+header {
+    background-color: var(--color-medium-burgundy);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 120px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--color-light-burgundy);
+}
+
+/* Основний контент */
+main {
+    padding: 40px;
+    /* Вирішення проблеми з прокруткою */
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Стилі для головної сторінки */
+.main-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.intro {
+    background-color: var(--color-light-burgundy);
+    color: var(--color-text-light);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.intro h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.gif-container {
+    margin-bottom: 30px;
+}
+
+.gif-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.intro p {
+    font-size: 1.1em;
+}
+
+/* Стилі для сторінок з десертами */
+.dessert-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    color: var(--color-text-light);
+}
+
+.dessert-info {
+    background-color: var(--color-medium-burgundy);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.dessert-header {
+    margin-bottom: 30px;
+}
+
+.dessert-image-wrapper img {
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.dessert-text-sections {
+    display: flex;
+    flex-wrap: wrap; /* Вирішення проблеми з обрізанням тексту на малих екранах */
+    justify-content: center;
+    gap: 20px;
+    text-align: left;
+}
+
+.dessert-text-sections article {
+    background-color: var(--color-dark-burgundy);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1 1 300px; /* Гнучкий розмір блоків */
+    min-height: 200px;
+}
+
+.dessert-text-sections h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--color-light-burgundy);
+}
+
+.dessert-ingredients ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.dessert-ingredients li {
+    margin-bottom: 10px;
+}
+
+.ingredient-name {
+    font-weight: bold;
+    color: var(--color-light-burgundy);
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-medium-burgundy);
+    color: var(--color-text-light);
+}
+
+/* Адаптивний дизайн */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .dessert-text-sections {
+        flex-direction: column;
+    }
+}
