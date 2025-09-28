@@ -11,6 +11,7 @@ html, body {
     max-width: 100vw; 
     overflow-x: hidden; 
 }
+
 /* Основні стилі та скидання */
 * {
     margin: 0;
@@ -24,6 +25,7 @@ body {
     background-color: #590D22;
     color: #A4133C;
     line-height: 1.6;
+    /* ВИДАЛЯЄМО height: 100vh звідси */
 }
 
 /* Колірна палітра */
@@ -44,16 +46,21 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .logo img {
     height: 120px;
+    max-width: 200px;
+    object-fit: contain;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    flex-wrap: wrap; /* Дозволяє перенос на нові рядки */
 }
 
 nav a {
@@ -63,19 +70,24 @@ nav a {
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 nav a:hover {
     background-color: var(--color-light-burgundy);
 }
 
-/* Основний контент */
+/* ГОЛОВНЕ ВИПРАВЛЕННЯ: основний контент без фіксованої висоти */
 main {
     padding: 40px;
-    /* Вирішення проблеми з прокруткою */
+    /* ВИДАЛЯЄМО ці рядки, що спричиняють подвійний скрол:
     overflow-y: auto;
     height: 100vh;
-    box-sizing: border-box;
+    */
+    width: 100%;
+    max-width: 100vw;
+    /* Додаємо мінімальну висоту замість фіксованої */
+    min-height: calc(100vh - 200px); /* 200px приблизна висота header + footer */
 }
 
 /* Стилі для головної сторінки */
@@ -84,6 +96,8 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+    max-width: 100%;
 }
 
 .intro {
@@ -93,6 +107,7 @@ main {
     border-radius: 10px;
     max-width: 800px;
     margin-top: 20px;
+    width: 100%;
 }
 
 .intro h1 {
@@ -102,6 +117,7 @@ main {
 
 .gif-container {
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .gif-container img {
@@ -121,6 +137,8 @@ main {
     align-items: center;
     gap: 40px;
     color: var(--color-text-light);
+    width: 100%;
+    max-width: 100%;
 }
 
 .dessert-info {
@@ -134,12 +152,21 @@ main {
 
 .dessert-header {
     margin-bottom: 30px;
+    width: 100%;
+}
+
+.dessert-image-wrapper {
+    width: 100%;
+    text-align: center;
 }
 
 .dessert-image-wrapper img {
-    max-width: 600px;
+    max-width: 100%;
+    width: auto;
     height: auto;
+    max-height: 400px;
     margin-bottom: 20px;
+    object-fit: contain;
 }
 
 h2 {
@@ -149,18 +176,21 @@ h2 {
 
 .dessert-text-sections {
     display: flex;
-    flex-wrap: wrap; /* Вирішення проблеми з обрізанням тексту на малих екранах */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     text-align: left;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .dessert-text-sections article {
     background-color: var(--color-dark-burgundy);
     padding: 20px;
     border-radius: 8px;
-    flex: 1 1 300px; /* Гнучкий розмір блоків */
+    flex: 1 1 300px;
     min-height: 200px;
+    width: 100%;
 }
 
 .dessert-text-sections h3 {
@@ -189,6 +219,9 @@ footer {
     padding: 20px;
     background-color: var(--color-medium-burgundy);
     color: var(--color-text-light);
+    width: 100%;
+    max-width: 100vw;
+    margin-top: 40px;
 }
 
 /* Адаптивний дизайн */
@@ -196,15 +229,104 @@ footer {
     header {
         flex-direction: column;
         text-align: center;
+        padding: 15px 20px;
+    }
+    
+    .logo img {
+        height: 80px;
+        max-width: 150px;
     }
     
     nav ul {
         flex-direction: column;
         gap: 10px;
         margin-top: 15px;
+        width: 100%;
+    }
+    
+    nav li {
+        width: 100%;
+    }
+    
+    nav a {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    main {
+        padding: 20px;
+        min-height: calc(100vh - 300px);
     }
 
     .dessert-text-sections {
         flex-direction: column;
+        gap: 15px;
     }
+    
+    .dessert-text-sections article {
+        flex: none;
+        min-height: auto;
+    }
+    
+    .intro {
+        padding: 20px;
+        margin-top: 15px;
+    }
+    
+    .intro h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+    
+    .logo img {
+        height: 60px;
+        max-width: 120px;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    .intro {
+        padding: 15px;
+    }
+    
+    .intro h1 {
+        font-size: 1.6em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    .dessert-text-sections h3 {
+        font-size: 1.3em;
+    }
+    
+    .dessert-text-sections article {
+        padding: 15px;
+    }
+}
+
+/* Додatkові виправлення для запобігання overflow */
+.dessert-description,
+.dessert-history,
+.dessert-ingredients {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Забезпечення плавного скролінгу */
+html {
+    scroll-behavior: smooth;
 }
