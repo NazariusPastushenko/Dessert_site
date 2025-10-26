@@ -330,3 +330,21 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background-image: url("../images/Factory.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+    transform: translateX(450px) translateY(100px); /* 👉 зсуває правіше на 100px */
+}
+
